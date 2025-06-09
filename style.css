@@ -463,6 +463,73 @@ body::before {
   background-color: #dcdcdc;
 }
 
+.card {
+  width: 100%;
+  max-width: 900px;
+  height: 350px;
+  margin: 0 auto;
+  perspective: 1200px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card-front {
+  background: radial-gradient(circle at center, 
+    #5F9C80 10%, 
+    #7467BF 30%, 
+    #374486 60%, 
+    #0F074A 100%);
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  border: 1px solid #ffffff40; /* subtle white border */
+}
+
+
+.card-back {
+  background: linear-gradient(135deg, #0F4C81, #3E7CB1, #89ABE3);
+  color: white;
+  transform: rotateY(180deg);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
+  padding: 20px;
+  border-radius: 0.5rem;
+}
+
+.card-text {
+  max-height: 90%;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+
 #aboutieee {
   padding: 100px 40px;
   max-width: 1000px;
@@ -566,4 +633,483 @@ body::before {
 }
 #talks {
   background-color: #0F074A;
+  margin-bottom: 60px; 
+}
+
+#registration {
+  margin-top: 850px;
+  position: relative; 
+  background-color: #000000; 
+  width: 100%; 
+  min-height: 700px; 
+  color: white; 
+  padding: 40px 96px; 
+}
+
+
+.registration-heading {
+  margin-top: 0px;
+  width: 513px;
+  height: 92px;
+  margin-left: 96px; 
+  font-family: 'Audiowide', sans-serif;
+  font-weight: 400;
+  font-size: 72px;
+  line-height: 1;  
+  letter-spacing: 0;
+  color: #FFFFFF;
+}
+#registration::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('head.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#registration > * {
+  position: relative;
+  z-index: 1;
+}
+
+.registration-box-container {
+  display: flex;
+  justify-content: flex-start; /* aligns boxes to the left */
+  margin-top: 40px;
+  padding-left: 96px; /* keep left padding if you want space from the edge */
+  padding-right: 0; /* remove right padding */
+  gap: 40px;
+}
+
+.registration-box {
+  width: 404px;
+  height: 659px;
+  background-color: rgba(155, 204, 182, 0.5); 
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #ffffff; 
+  font-family: 'Orbitron', sans-serif;
+  z-index: 1;
+}
+
+.card-heading {
+  width: 262px;
+  height: 45px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 1; /* 100% line height */
+  letter-spacing: 0;
+  color: #FFFFFF;
+  margin: 0 0 20px 0; /* optional: space below the heading */
+}
+.card-price {
+  width: 318px;
+  height: 80px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 1; 
+  letter-spacing: 0;
+  color: #FFFFFF;
+  margin: 50px 0 20px 0; 
+}
+.card-features {
+  width: 334px;
+  height: 224px;
+  font-family: 'Audiowide', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+.register-button {
+  width: 272px;
+  height: 72px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+
+  font-family: 'VT323', monospace;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #0E0060;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px; /* adjust spacing as needed */
+  transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: #ffffff;
+}
+.fancy-flip-button {
+  width: 272px;
+  height: 72px;
+  border-radius: 20px;
+  perspective: 1000px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  transform-style: preserve-3d;
+}
+
+.fancy-flip-button::before,
+.fancy-flip-button::after {
+  content: attr(data-front);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  font-family: 'VT323', monospace;
+  font-size: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  backface-visibility: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.fancy-flip-button::before {
+  background: linear-gradient(to right, #FFFFFF, #F0F0F0); /* subtle shine */
+  color: #0E0060;
+  transform: rotateX(0deg);
+  z-index: 2;
+}
+
+.fancy-flip-button::after {
+  background: linear-gradient(to bottom, #4F685D, #FFFFFF);
+  color: #0E0060;
+  content: attr(data-back);
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.fancy-flip-button:hover::before {
+  transform: rotateX(180deg);
+}
+
+.fancy-flip-button:hover::after {
+  transform: rotateX(360deg);
+}
+
+.holographic-wrap {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+}
+
+.holographic-wrap::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(163, 206, 241, 0.15),
+    rgba(155, 204, 182, 0.2),
+    rgba(96, 150, 186, 0.15)
+  );
+  transform: rotate(-30deg);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+  z-index: 0;
+}
+
+.holographic-wrap:hover::before {
+  transform: rotate(-30deg) translateY(80%);
+  opacity: 1;
+}
+
+.holographic-wrap:hover {
+  transform: scale(1.02);
+}
+
+.registration-box {
+  position: relative;
+  z-index: 1; /* ensure it's above the pseudo element */
+  backdrop-filter: blur(2px);
+  box-shadow: 0 0 20px rgba(155, 204, 182, 0.3);
+  transition: box-shadow 0.5s ease;
+}
+
+.holographic-wrap:hover .registration-box {
+  box-shadow: 0 0 40px rgba(163, 206, 241, 0.6), 0 0 20px rgba(96, 150, 186, 0.4);
+}
+.holographic-wrap:hover {
+  box-shadow: 0 0 20px rgba(96, 150, 186, 0.5);
+}
+
+#contact {
+  margin-top: 0px; /* adjust depending on spacing needed */
+  padding-left: 96px;
+  padding-right: 96px;
+  padding-bottom: 40px;
+  background-color: #000000; /* match Registration background */
+}
+
+.contact-heading {
+  margin-top: 50px;
+  width: 335px;
+  height: 92px;
+  font-family: 'Audiowide', sans-serif;
+  font-weight: 400;
+  font-size: 72px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.social-icons li {
+  position: relative;
+  cursor: pointer;
+}
+
+.social-icons li a {
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+}
+
+.social-icons li a i {
+  font-size: 4em;
+  color: #222;
+  transition: all 0.4s ease;
+}
+
+/* Pseudo-element effect */
+.social-icons li a::before {
+  content: attr(data-icon);
+  font-family: "Font Awesome 6 Brands";
+  position: absolute;
+  font-size: 4em;
+  top: 0;
+  left: 0;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s ease;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.social-icons li:nth-child(1) a::before {
+  content: "\f16d"; /* Instagram */
+  background-image: linear-gradient(45deg,
+    #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border-bottom: 4px solid #dc2743;
+}
+
+.social-icons li:nth-child(2) a::before {
+  content: "\f232"; /* Whatsapp */
+  background-image: linear-gradient(45deg, #25D366, #128C7E);
+  border-bottom: 4px solid #25D366;
+}
+
+.social-icons li:nth-child(3) a::before {
+  content: "\f099"; /* Twitter */
+  background-image: linear-gradient(45deg, #1DA1F2, #0d8ddb);
+  border-bottom: 4px solid #1DA1F2;
+}
+
+.social-icons li:hover a::before {
+  height: 100%;
+}
+
+.social-icons li:hover a i {
+  color: transparent;
+}
+
+.map-placeholder {
+  width: 1111px;
+  height: 505px;
+  margin: 80px auto; /* centers the section */
+  background-color: rgba(79, 104, 93, 0.4); /* translucent #4f685d */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.map-text {
+  width: 774px;
+  height: 92px;
+  font-family: 'Audiowide', sans-serif;
+  font-weight: 400;
+  font-size: 72px;
+  line-height: 100%;
+  color: #000000;
+  text-align: center;
+}
+.contact-boxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px; /* spacing between the boxes */
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.contact-card {
+  width: 283px;
+  height: 90px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.countdown-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: #000000;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.countdown-heading {
+  font-size: 72px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.countdown-subheading {
+  font-size: 28px;
+  font-family: 'Audiowide', sans-serif;
+  margin-bottom: 40px;
+  color: #9bccb6;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.time-box {
+  background-color: rgba(155, 204, 182, 0.2);
+  border: 2px solid #9bccb6;
+  padding: 20px 30px;
+  border-radius: 20px;
+  min-width: 120px;
+  transition: transform 0.3s ease;
+}
+
+.time-box:hover {
+  transform: scale(1.1);
+}
+
+.time-box span {
+  font-size: 48px;
+  font-weight: bold;
+  display: block;
+}
+
+.time-box small {
+  font-size: 18px;
+  color: #e0e1dd;
+}
+#logo-end{
+  background-color: #000000;
+  margin-top: 0; /* make sure no top margin */
+  padding-top: 40px; /* optional padding if you want spacing */
+}
+.mascot-placeholder {
+  width: 405px;
+  height: 325px;
+  margin: 0px auto; /* center horizontally */
+  background-color: rgba(79, 104, 93, 0.3); /* translucent version of #4F685D */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.mascot-placeholder .placeholder-text {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 100%;
+  color: #000000;
+  text-align: center;
+}
+
+#banner-end {
+  background-color: #000000;
+  margin-top: 0;
+  padding: 60px 0; /* give enough vertical space for rotated banners */
+  position: relative;
+  overflow: visible; /* allow rotated banners to be visible */
+}
+
+.crossed-banners1 {
+  position: relative;
+  width: 100%;
+  padding-top: 90px;
+  height: 180px; /* increased if needed */
+  background-color: #000000;
+  overflow: visible; /* important for rotated text to be seen */
+}
+
+.banner {
+  position: absolute;
+  background: white;
+  color: black;
+  font-size: 18px;
+  padding: 10px 0;
+  width: 160%;
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+  left: -30%;
+}
+
+.banner-top1 {
+  top: -20px; /* Move it upward into view */
+  transform: rotate(-12deg);
+}
+
+.banner-bottom1 {
+  top: 90px;
+  transform: rotate(7deg);
 }
